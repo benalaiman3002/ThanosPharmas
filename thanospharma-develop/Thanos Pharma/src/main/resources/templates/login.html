@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>ThanosPharma</title>
+</head>
+<body>
+    <form method="POST" th:action="@{/login}">
+        <div class="container">
+            <div class="backbox">
+                <div class="loginMsg">
+                    <div class="textcontent">
+                        <p>BIENVENIDO/A!</p>
+                        <p>Somos una empresa que crea soluciones ERP 
+                            para empresas<br> farmacéuticas. 
+                            Ayudamos a <br>simplificar y optimizar sus 
+                            procesos <br>empresariales para lograr 
+                            un mayor éxito empresarial.</p>
+                    </div>
+                </div>
+                <div class="signupMsg visibility">
+                    <div class="textcontent">
+                        <p class="title">¿Tienes cuenta ya?</p>
+                        <p>Inicia sesión para ver tu colección</p>
+                        <button id="switch2">INICIAR SESIÓN</button>
+                    </div>
+                </div>
+            </div>    <!-- backbox -->
+
+            <div class="frontbox">
+                <div class="login">
+                    <h2>INICIAR SESIÓN</h2>
+                    <div class="inputbox">
+                        <label for="username">Usuario:</label>
+                        <input type="text" name="username" id="username"/>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password" id="password"/>
+                    </div>
+                    <a href="https://portal.mineco.gob.es/es-es/ministerio/Paginas/Politica_de_privacidad.aspx">Política de privacidad</a>
+                    <button type="submit" value="Login">Continuar</button>
+                </div>
+
+                <div class="signup hide">
+                </div>
+
+            </div>
+            <!-- frontbox -->
+        </div>
+    </form>
+</body>
+</html>

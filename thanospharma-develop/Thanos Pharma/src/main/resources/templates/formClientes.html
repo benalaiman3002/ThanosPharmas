@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head>
+        <title>Formulario Cliente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <title>Modificar Usuario</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
+        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <!-- Custom styles for this template -->
+        <link href="/css/general.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h2 class="cabecera">Añadir/Modificar Cliente</h2>
+
+        <button class="cabecera" onclick="window.location.href = '/clientes'"><- Volver</button>
+
+        <p/>
+        <div class="container" id="containerFormGeneral"> 
+            <form th:action="@{/saveClientes}" method="post" th:object="${cliente}">
+                <div class="form-group hide">
+                    <label for="id_cliente" th:text="#{forClient.id}"/>
+                    <input type="text" class="form-control" name="id_cliente" th:field="*{id_cliente}" th:placeholder="#{forClient.ph.idcliente}">
+                </div>
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('tse')} ? 'has-error'">
+                    <label for="tse" th:text="#{forClient.tse}"/>
+                    <input type="text" class="form-control" name="tse" th:field="*{tse}" th:placeholder="#{forClient.ph.tse}" th:classappend="${#fields.hasErrors('tse')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('tse')}" th:errors="*{tse}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('nombre')} ? 'has-error'">
+                    <label for="nombre" th:text="#{forClient.name}"/>
+                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" th:placeholder="#{forClient.ph.name}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('apellido')} ? 'has-error'">
+                    <label for="apellido" th:text="#{forClient.surname}"/>
+                    <input type="text" class="form-control" name="apellido" th:field="*{apellido}" th:placeholder="#{forClient.ph.surname}" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('direccion')} ? 'has-error'">
+                    <label for="direccion" th:text="#{forClient.location}"/>
+                    <input type="text" class="form-control" name="direccion" th:field="*{direccion}" th:placeholder="#{forClient.ph.location}" th:classappend="${#fields.hasErrors('direccion')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('municipio')} ? 'has-error'">
+                    <label for="municipio" th:text="#{forClient.town}"/>
+                    <input type="text" class="form-control" name="municipio" th:field="*{municipio}" th:placeholder="#{forClient.ph.town}" th:classappend="${#fields.hasErrors('municipio')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('municipio')}" th:errors="*{municipio}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+                    <label for="email" th:text="#{forClient.email}"/>
+                    <input type="text" class="form-control" name="email" th:field="*{email}" th:placeholder="#{forClient.ph.email}" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('codigo_postal')} ? 'has-error'">
+                    <label for="cp" th:text="#{forClient.postal}"/>
+                    <input type="text" class="form-control" name="codigo_postal" th:field="*{codigo_postal}" th:placeholder="#{forClient.ph.postal}" th:classappend="${#fields.hasErrors('codigo_postal')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('codigo_postal')}" th:errors="*{codigo_postal}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('telefono')} ? 'has-error'">
+                    <label for="telefono" th:text="#{forClient.phone}"/>
+                    <input type="text" class="form-control" name="telefono" th:field="*{telefono}" th:placeholder="#{forClient.ph.phone}" th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : '' ">
+                    <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+                <p/>
+                <br><br>
+                <input type="submit" class="btn btn-primary" name="enviar" value="Enviar datos"/>
+            </form>
+        </div>
+    </body>
+</html>

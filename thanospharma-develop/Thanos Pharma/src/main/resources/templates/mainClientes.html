@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>Clientes</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
+        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <!-- Custom styles for this template -->
+        <link href="/css/general.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#locales").change(function () {
+                    var selectedOption = $('#locales').val();
+                    if (selectedOption != '') {
+                        window.location.replace('mainClientes?lang=' + selectedOption);
+                    }
+                });
+            });
+        </script>
+        <script src="../model/functions.js"></script> 
+    </head>
+    <body>
+        <main>
+            <div class="container" id="listaMainClientes">
+                <div class="container">
+                    <h1 th:text="#{mainClientes.title}"/>
+                    <div id="topListaMainCliente">
+                        <button type="button" class="btn btn-primary" onclick="location.href = 'formClientes'" th:text="#{mainClientes.btn.add}"/>
+                        <button type="button" class="btn btn-primary" onclick="modifyOrDeleteCliente('modify')" th:text="#{mainClientes.btn.modify}"/>
+                        <button type="button" class="btn btn-primary" onclick="modifyOrDeleteCliente('delete')" th:text="#{mainClientes.btn.delete}" sec:authorize="hasAnyAuthority('admin')"/>
+                        <div class="col-xs-2 search-container">
+                            <input type="search" class="form-control rounded" id="cuadro-busqueda" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" onkeyup="buscarCliente()" />
+                        </div>
+                    </div>
+                </div>
+                <table class="table" id="tabla-clientes">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                            <th scope="col" th:text="#{forClient.id}"/>
+                            <th scope="col" th:text="#{forClient.tse}"/>
+                            <th scope="col" th:text="#{forClient.name}"/>
+                            <th scope="col" th:text="#{forClient.surname}"/>
+                            <th scope="col" th:text="#{forClient.location}"/>
+                            <th scope="col" th:text="#{forClient.town}"/>
+                            <th scope="col" th:text="#{forClient.email}"/>
+                            <th scope="col" th:text="#{forClient.postal}"/>
+                            <th scope="col" th:text="#{forClient.phone}"/>
+                        </tr>
+                    </thead>
+                    <p>
+                    <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td>
+                                <input type="checkbox" id="checkboxClientes" name="selectedCliente" th:value="${cliente.id_cliente}" onclick="seleccionarUnicoCheckboxCliente(this)"/>
+                            </td>    
+                            <td th:text="${cliente.id_cliente}"/>
+                            <td th:text="${cliente.tse}"/>
+                            <td th:text="${cliente.nombre}"/>
+                            <td th:text="${cliente.apellido}"/>
+                            <td th:text="${cliente.direccion}"/>
+                            <td th:text="${cliente.municipio}"/>
+                            <td th:text="${cliente.email}"/>
+                            <td th:text="${cliente.codigo_postal}"/>
+                            <td th:text="${cliente.telefono}"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <div th:include="~{menu :: sidebar}"></div>
+    </body>
+</html>
